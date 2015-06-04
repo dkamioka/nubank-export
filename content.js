@@ -22,7 +22,7 @@ function getData() {
       result.push([categoria, loja, valor, data]);
     }
   }
-  var csvContent = "data:text/csv,";
+  var csvContent = "data:text/csv";
   result.forEach(function(infoArray, index){
 
     resultString = infoArray.join(",");
@@ -30,5 +30,11 @@ function getData() {
 
  });
  var encodedUri = encodeURI(csvContent);
-window.open(encodedUri); 
+var link = document.createElement("a");
+link.setAttribute("href", encodedUri);
+// acha o período selecionado para usar de nome do arquivo
+var periodo = document.querySelector('div #timeChart span.filter').textContent.replace(/ /g,'');
+link.setAttribute("download", periodo + ".csv");
+
+link.click(); // This will download the data file named "my_data.csv".
 }
