@@ -22,7 +22,7 @@ function getData() {
       result.push([categoria, loja, valor, data]);
     }
   }
-  var csvContent = "data:text/csv";
+  var csvContent = "data:text/csv;charset=utf-8,";
   result.forEach(function(infoArray, index){
 
     resultString = infoArray.join(",");
