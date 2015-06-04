@@ -16,7 +16,6 @@
   ],
   "page_action": {
     "default_icon": "icon.png",
-    // "default_popup": "popup.html",
     "default_title": "Nubank Export"
   },
   "permissions": [
