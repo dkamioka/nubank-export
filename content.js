@@ -11,16 +11,14 @@ chrome.runtime.onMessage.addListener(
 
 function getData() {
   var result = [["categoria", "loja", "valor", "data"]];
-  var a = document.querySelectorAll("div.event-card")
+  var a = document.querySelectorAll("div.event-card.transaction")
   for (var i = 0; i < a.length; i++) {
     console.log(i);
     var categoria = a[i].querySelector("span.title").textContent;
-    if (categoria != "Fatura paga") {
-      var loja = a[i].querySelector("h4.description").textContent;
-      var valor = a[i].querySelector("div.amount").textContent.replace(/[^0-9-,]/g, '').replace(",",".");
-      var data = a[i].querySelector("span.time").textContent;
-      result.push([categoria, loja, valor, data]);
-    }
+    var loja = a[i].querySelector("h4.description").textContent;
+    var valor = a[i].querySelector("div.amount").textContent.replace(/[^0-9-,]/g, '').replace(",",".");
+    var data = a[i].querySelector("span.time").textContent;
+    result.push([categoria, loja, valor, data]);
   }
   var csvContent = "data:text/csv;charset=utf-8,";
   result.forEach(function(infoArray, index){
