@@ -10,7 +10,7 @@ chrome.runtime.onMessage.addListener(
   });
 
 function getData() {
-  var result = [["categoria", "loja", "valor", "data"]];
+  var result = [["categoria", "loja", "valor", "data", "tags"]];
   var a = document.querySelectorAll("div.event-card.transaction")
   for (var i = 0; i < a.length; i++) {
     console.log(i);
@@ -18,7 +18,15 @@ function getData() {
     var loja = a[i].querySelector("h4.description").textContent;
     var valor = a[i].querySelector("div.amount").textContent.replace(/[^0-9-,]/g, '').replace(",",".");
     var data = a[i].querySelector("span.time").textContent;
-    result.push([categoria, loja, valor, data]);
+
+    var resultTag = a[i].querySelectorAll("span.tag");
+    var tags = [];
+    if (resultTag) {
+      for (var j = 0; j < resultTag.length; j++) {
+        tags.push(resultTag[j].textContent);
+      }
+    }
+    result.push([categoria, loja, valor, data, tags.join('|')]);
   }
   var csvContent = "data:text/csv;charset=utf-8,";
   result.forEach(function(infoArray, index){
