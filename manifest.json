@@ -3,7 +3,7 @@
 
   "name": "Nubank Exportador não-oficial",
   "description": "Exporte seus gastos para um arquivo CSV para usar em planilhas e gerar seus relatórios",
-  "version": "1.0",
+  "version": "1.1",
   "background": {
       "scripts": ["script.js"],
       "persistent": false
